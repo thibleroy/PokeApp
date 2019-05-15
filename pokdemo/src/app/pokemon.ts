@@ -1,9 +1,22 @@
 export class Pokemon {
-    id:String=""
-    nom:String=""
-    constructor(id:String,nom:String){
-        this.id=id;
-        this.nom=nom;
-    }
+    id:number;
+    name:String;
+    abilities?:[{
+            name:String
+    }];
+    height?:number;
+    sprites?:{
+        front_default:String,
+        back_default:String
+    };
+    stats?:[{
+        base_stat:number,
+        effort:number,
+        name:String
+    }];
+    types?:[{
+        name:String
+    }]
+    weight?:number
  
 }

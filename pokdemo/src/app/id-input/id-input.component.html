@@ -1,20 +1,19 @@
 
-  <mat-form-field class="example-full-width" full-width>
-    <input matInput placeholder="id Pokemon" [(ngModel)]="id" full-width>
-  </mat-form-field>
 
-  <mat-form-field class="example-full-width" full-width>
-    <input readonly='true' matInput placeholder="nom Pokemon" value={{id}} full-width>
-  </mat-form-field>
+    <input matInput placeholder="id Pokemon" [(ngModel)]="id" class="full-width-field">
 
-  <mat-select [(ngModel)]="choice" full-width>
-    <mat-option *ngFor="let pokemon of ListPokemons"full-width>
-      {{pokemon.nom}}
-    </mat-option>
-  </mat-select>
-
-  <mat-form-field class="example-full-width"full-width>
+    <input readonly='true' matInput placeholder="nom Pokemon" value={{id}} class="full-width-field">
+    
+    
+    <mat-form-field class="full-width-field">
+      <mat-select class="full-width-field" [(ngModel)]="choice">
+        <mat-option *ngFor="let pokemon of (ListPokemons | filterPokemonPipe : 'name' : filter)">
+          {{pokemon.name}}
+        </mat-option>
+      </mat-select>
+    
+    </mat-form-field>
+    
     <input matInput placeholder="Filtrer" [(ngModel)]="filter" full-width>
-  </mat-form-field>
-
-  <button mat-raised-button full-width (click)="Filtrer()">Go!</button>
+    
+    <button class="full-width-field" mat-raised-button fullWidth (click)="showPok()">Go!</button>
