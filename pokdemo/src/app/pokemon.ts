@@ -1,5 +1,6 @@
+import {Values,Infos} from './interfaces'
 export class Pokemon {
-    id:number;
+    id:String;
     name:String;
     abilities?:[{
             name:String
@@ -16,7 +17,8 @@ export class Pokemon {
     }];
     types?:[{
         name:String
-    }]
-    weight?:number
- 
+    }];
+    weight?:number;
+    infos?:Infos;
+    description?:String;
 }

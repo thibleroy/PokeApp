@@ -1,6 +1,7 @@
-import { Component, OnInit, NgModule } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Pokemon } from '../pokemon'
-import { HttpServiceService, Values } from '../http-service.service'
+import { HttpServiceService } from '../http-service.service'
+import { DataService } from '../data.service'
 @Component({
   selector: 'app-id-input',
   templateUrl: './id-input.component.html',
@@ -9,23 +10,30 @@ import { HttpServiceService, Values } from '../http-service.service'
 
 
 export class IdInputComponent implements OnInit {
-  choice: String;
-  filter: String;
-  ListPokemons: Pokemon[];
+  filter: String
+  selected: Boolean = false;
 
-  constructor(private httpService: HttpServiceService) {
-   this.ListPokemons= this.httpService.getPokemons();
-    this.ListPokemons = this.httpService.Pokemons;
+  constructor(private httpService: HttpServiceService, private dataService: DataService) {
+
   }
 
   showPok() {
-    console.log('heyy', this.ListPokemons)
+    this.selected = true;
+    this.dataService.pokemons.forEach((p: Pokemon) => {
+      if (p.name == this.filter) {
+        this.httpService.getPok(p.id)
+        this.httpService.getPokSpec(p.id)
+      }
+    })
 
   }
   ngOnInit() {
-    this.ListPokemons=this.httpService.getPokemons();
-    this.ListPokemons = this.httpService.Pokemons;
-    
+    this.httpService.getPoks()
+
+    const observable = this.dataService.getPokemons()
+    observable.subscribe((poksData: Pokemon[]) => {
+      this.dataService.pokemons = poksData;
+    })
   }
 
 

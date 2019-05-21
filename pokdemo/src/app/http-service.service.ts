@@ -1,51 +1,45 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Pokemon } from './pokemon'
-export interface Values {
-
-  pokemon_entries: [{
-    entry_number: number,
-    pokemon_species: {
-      name: String,
-      url: String
-    }
-  }]
-
-}
+import {DataService} from './data.service'
+import {Values,Infos} from './interfaces'
 
 @Injectable({
   providedIn: 'root'
 })
 
-
 export class HttpServiceService {
-  Pokemons: Pokemon[];
-  
-  constructor(private http: HttpClient) {
-    this.Pokemons = []
-    this.getPok()
+  constructor(private http: HttpClient,private dataService:DataService) {
   }
 
-  getPok() {
+  getPoks() {
     this.http.get<Values>('https://pokeapi.co/api/v2/pokedex/1').subscribe(
       res => {
         let entries = res.pokemon_entries
         for (let entry of entries) {
-          this.Pokemons.push({
-            id: entry.entry_number,
+          this.dataService.pokemons.push({
+            id: ''+entry.entry_number,
             name: entry.pokemon_species.name
           })
         }
-
       }
-
     );
   }
-  getPokemons() {
-    return this.Pokemons
+  getPok(id: String) {
+    
+      console.log('getpok',id)
+      this.http.get<Pokemon>('https://pokeapi.co/api/v2/pokemon/' + id).subscribe(
+        res => {
+         this.dataService.pokemon=res
+         console.log('pok',res)
+        }
+      )
+    
   }
+  getPokSpec(id:String){
 
-  getPokemon(id: String) {
-    return this.http.get('https://pokeapi.co/api/v2/pokemon/' + id)
+    this.http.get<Infos>('https://pokeapi.co/api/v2/pokemon-species/' + id).subscribe(
+      res => { this.dataService.pokemon.infos=res}
+    )
   }
 }
