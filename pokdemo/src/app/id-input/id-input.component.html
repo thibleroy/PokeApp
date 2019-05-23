@@ -14,4 +14,4 @@
      </mat-autocomplete>
     </mat-form-field>
     <button class="full-width-field" mat-raised-button fullWidth (click)="showPok()">Go!</button>
-    <app-pokemon-card *ngIf="selected"></app-pokemon-card>
+    <pokemon [id]="idSelected" *ngIf="done"></pokemon>

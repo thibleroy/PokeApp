@@ -1,24 +1,40 @@
-import {Values,Infos} from './interfaces'
 export class Pokemon {
-    id:String;
-    name:String;
-    abilities?:[{
-            name:String
-    }];
-    height?:number;
-    sprites?:{
-        front_default:String,
-        back_default:String
+    id: Number;
+    name: String;
+    species:{
+        url:String;
     };
-    stats?:[{
-        base_stat:number,
-        effort:number,
-        name:String
+    capture_rate:Number;
+    color:{
+        name:String,
+        url:String
+    };
+    happiness:Number;
+    experience: Number;
+    abilities?: [{
+        ability: {
+            name: String
+        }
+
     }];
-    types?:[{
-        name:String
+    height?: Number;
+    sprites?: {
+        front_default: String,
+        back_default: String
+    };
+    stats?: [{
+        base_stat: Number,
+        stat: {
+            name: String
+        }
+
     }];
-    weight?:number;
-    infos?:Infos;
-    description?:String;
+    types?: [{
+        type:{
+            name: String
+        }
+        
+    }];
+    weight?: Number;
+    description?: String
 }

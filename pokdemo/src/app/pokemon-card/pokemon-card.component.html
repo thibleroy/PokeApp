@@ -1,17 +1,13 @@
-<mat-progress-bar mode="query" *ngIf="loading"></mat-progress-bar>
-<mat-card>
+<mat-card *ngIf="done">
   <mat-card-header>
     <img mat-card-avatar src={{dataService.pokemon.sprites.front_default}}>
-    <mat-card-title>Name : {{pokemon.name}}</mat-card-title>
-    <mat-card-subtitle>Id : {{pokemon.id}}</mat-card-subtitle>
+    <mat-card-title>Name : {{dataService.pokemon.name}}</mat-card-title>
+    <mat-card-subtitle>Id : {{dataService.pokemon.id}}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
     <p>
-      {{pokemon.description}}
+      {{dataService.pokemon.description}}
     </p>
 
   </mat-card-content>
-
-
-
 </mat-card>

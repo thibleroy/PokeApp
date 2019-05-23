@@ -1,42 +1,43 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Subject } from 'rxjs';
 import { Pokemon } from './pokemon';
-import {Infos} from './interfaces'
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
-  pokemons: Pokemon[]
-  pokemon: Pokemon
+  pokemons: Pokemon[];
+  pokemon: Pokemon;
+  subPoks: Subject<Pokemon[]>; 
+  subPok: Subject<Pokemon>; 
+  subDesc: Subject<String>; 
+  constructor() {
+    this.pokemons = [];
+    this.pokemon = new Pokemon();
+    this.subPoks = new Subject<Pokemon[]>();
+    this.subPok = new Subject<Pokemon>();
+    this.subDesc = new Subject<String>();
+    this.subPok.subscribe((pok: Pokemon) => {
+      this.pokemon = pok;
+    })
+    this.subPoks.subscribe((poks: Pokemon[]) => {
+      this.pokemons = poks
+    })
+    this.subDesc.subscribe((desc: String) => {
+      this.pokemon.description = desc
+    })
+  }
 
-  constructor() { 
-    this.pokemons=[]
-    this.pokemon=new Pokemon()
+  getPokemon() {
+    this.subPok.next(this.pokemon)
   }
 
-  getPokemon(): Observable<Pokemon> {
-    const obs = new Observable<Pokemon>(observer => {
-      setTimeout(() => {
-        observer.next(this.pokemon)
-      }, 500)
-    })
-    return obs;
+  getPokemonDesc(){
+    this.subDesc.next(this.pokemon.description)
   }
-  getPokemons(): Observable<Pokemon[]> {
-    const obs = new Observable<Pokemon[]>(observer => {
-      setTimeout(() => {
-        observer.next(this.pokemons)
-      }, 500)
-    })
-    return obs;
+
+  getPokemons() {
+    this.subPoks.next(this.pokemons)
   }
-  getPokemonSpec():Observable<Infos>{
-    const obs = new Observable<Infos>(observer => {
-      setTimeout(() => {
-        observer.next(this.pokemon.infos)
-      }, 500)
-    })
-    return obs;
-  }
+
 }

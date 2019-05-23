@@ -1,38 +1,29 @@
-import { Component, OnInit } from '@angular/core';
-import { Pokemon } from '../pokemon'
+import { Component, OnInit, Input } from '@angular/core';
+import { DataService } from '../data.service'
+import { HttpServiceService } from '../http-service.service'
 
-import {DataService} from '../data.service'
-import { Infos } from '../interfaces';
 @Component({
-  selector: 'app-pokemon-card',
+  selector: 'pokemon',
   templateUrl: './pokemon-card.component.html',
   styleUrls: ['./pokemon-card.component.css']
 })
 export class PokemonCardComponent implements OnInit {
+  @Input() id: Number
+  done: Boolean
 
-  pokemon:Pokemon;
-  pokemons:Pokemon[]
+  constructor(private dataService: DataService, private httpService: HttpServiceService) {
+    this.done = false;
+  }
 
-loading:Boolean=true;
-  constructor(private dataService:DataService) {
-   }
+  ngOnInit() {
 
-  ngOnInit() {   
-    const observable = this.dataService.getPokemon();
-    observable.subscribe((pokData:Pokemon) => {
-        this.pokemon = pokData;
-        this.loading=false
-        console.log('poke',pokData)
-    });
-
-    const observableinfos=this.dataService.getPokemonSpec();
-    observableinfos.subscribe((pokData:Infos)=>{
-      this.pokemon.infos=pokData
-      pokData.flavor_text_entries.forEach(entry=>{
-        if (entry.language.name=='en') this.pokemon.description=entry.flavor_text
-      })
-      
-    })
+    this.httpService.getPok(this.id).then(() => this.dataService.getPokemon())
+    this.httpService.getDesc(this.id).then(() => {
+      this.dataService.getPokemon()
+      this.done = true;
+    }
+    )
+    console.log('pok',this.dataService.pokemon)
   }
 
 }
