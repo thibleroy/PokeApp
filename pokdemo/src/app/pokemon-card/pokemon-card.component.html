@@ -1,13 +1,12 @@
-<mat-card *ngIf="done">
-  <mat-card-header>
-    <img mat-card-avatar src={{dataService.pokemon.sprites.front_default}}>
-    <mat-card-title>Name : {{dataService.pokemon.name}}</mat-card-title>
-    <mat-card-subtitle>Id : {{dataService.pokemon.id}}</mat-card-subtitle>
-  </mat-card-header>
-  <mat-card-content>
-    <p>
-      {{dataService.pokemon.description}}
-    </p>
-
+<mat-card *ngIf="done" [style.backgroundColor]=dataService.pokemon.color.name>
+  <description></description>
+  <p></p>
+  <mat-card-content row>
+   
+<stats></stats>
+<p></p>
+<abilities></abilities>
+<p></p>
+<specs></specs>
   </mat-card-content>
 </mat-card>

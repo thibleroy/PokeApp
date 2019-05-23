@@ -1,0 +1,10 @@
+<mat-card>
+   <mat-card-header>
+    <mat-card-title>Type(s)</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+      <mat-list>
+          <a mat-list-item *ngFor="let type of dataService.pokemon.types"> <b>{{type.type.name}}</b> </a>
+         </mat-list>
+  </mat-card-content>
+</mat-card>

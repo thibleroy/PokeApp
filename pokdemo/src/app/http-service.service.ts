@@ -55,7 +55,6 @@ export class HttpServiceService {
     let promise = new Promise<Description>((resolve, reject) => {
       this.http.get('https://pokeapi.co/api/v2/pokemon-species/' + id).subscribe(
         (res: Description) => {
-          console.log('edesc',res)
           res.flavor_text_entries.forEach(desc => {
             if (desc.language.name = 'en') this.dataService.pokemon.description = desc.flavor_text
           })

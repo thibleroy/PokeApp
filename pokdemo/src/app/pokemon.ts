@@ -13,7 +13,7 @@ export class Pokemon {
     experience: Number;
     abilities?: [{
         ability: {
-            name: String
+            name: String,
         }
 
     }];
