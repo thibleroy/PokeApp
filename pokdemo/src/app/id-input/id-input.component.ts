@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpServiceService } from '../http-service.service'
-import { DataService } from '../data.service'
+import { HttpServiceService } from '../http-service.service';
+import { DataService } from '../data.service';
 @Component({
   selector: 'app-id-input',
   templateUrl: './id-input.component.html',
@@ -9,38 +9,33 @@ import { DataService } from '../data.service'
 
 
 export class IdInputComponent implements OnInit {
-  filter: String
-  idSelected: Number
-  loaded: Boolean
+  filter: string;
+  idSelected: number;
+  loaded: boolean;
   constructor(private httpService: HttpServiceService, private dataService: DataService) {
     this.loaded = false;
   }
 
   showPok() {
-    this.loaded=false
+    this.loaded = false;
     this.dataService.pokemons.forEach((entry) => {
-      if (entry.name == this.filter) {
-        this.idSelected = entry.id
+      if (entry.name === this.filter) {
+        this.idSelected = entry.id;
 
       }
-    })
+    });
 
 
     this.httpService.getPok(this.idSelected).then(() => {
 
-      this.dataService.getPokemon()
-      this.loaded = true
-    })
+      this.dataService.getPokemon();
+      this.loaded = true;
+    });
 
     this.httpService.getDesc(this.idSelected).then(() => {
-      this.dataService.getPokemon()
+      this.dataService.getPokemon();
     }
-    )
-
-
-
-
-
+    );
   }
   ngOnInit() {}
 

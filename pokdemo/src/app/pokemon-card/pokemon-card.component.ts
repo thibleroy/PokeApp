@@ -7,7 +7,7 @@ import { DataService } from '../data.service'
   styleUrls: ['./pokemon-card.component.css']
 })
 export class PokemonCardComponent implements OnInit {
-  @Input() done: Boolean
+  @Input() done: boolean
 
   constructor(private dataService: DataService) {}
 

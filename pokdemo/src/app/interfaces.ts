@@ -1,55 +1,55 @@
 export interface Value {
-    entry_number: Number,
+    entry_number: number;
     pokemon_species: {
-        name: String,
-        url: String
-    }
+        name: string,
+        url: string
+    };
 }
 export interface Description {
 
-base_happiness:Number,
-capture_rate:Number,
-color:{
-    name:String,
-    url:String
-},
-flavor_text_entries:[{
+base_happiness: number;
+capture_rate: number;
+color: {
+    name: string,
+    url: string
+};
+flavor_text_entries: [{
 
-    flavor_text: String,
+    flavor_text: string,
     language: {
-        name: String
+        name: string
     }
-}],
+}];
 }
 
 export interface Info {
-    id:Number,
-    name:String
+    id: number;
+    name: string;
     abilities: [{
         ability: {
-            name: String
+            name: string
         }
     }
-    ],
-    base_experience: Number,
-    height: Number,
+    ];
+    base_experience: number;
+    height: number;
     species: {
-        url: String
-    },
+        url: string
+    };
     stats: [{
-        base_stat: Number,
+        base_stat: number,
         stat: {
-            name: String
+            name: string
         }
-    }],
+    }];
     types: [{
         type: {
-            name: String
+            name: string
         }
-    }],
-    weight: Number,
-    sprites:{
-        back_default:String,
-        front_default:String
-    }
+    }];
+    weight: number;
+    sprites: {
+        back_default: string,
+        front_default: string
+    };
 }

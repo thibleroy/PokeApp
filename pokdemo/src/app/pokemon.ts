@@ -1,40 +1,40 @@
 export class Pokemon {
-    id: Number;
-    name: String;
-    species:{
-        url:String;
+    id: number;
+    name: string;
+    species: {
+        url: string;
     };
-    capture_rate:Number;
-    color:{
-        name:String,
-        url:String
+    // tslint:disable-next-line:variable-name
+    capture_rate: number;
+    color: {
+        name: string,
+        url: string
     };
-    happiness:Number;
-    experience: Number;
+    happiness: number;
+    experience: number;
     abilities?: [{
         ability: {
-            name: String,
+            name: string,
         }
 
     }];
-    height?: Number;
+    height?: number;
     sprites?: {
-        front_default: String,
-        back_default: String
+        front_default: string,
+        back_default: string
     };
     stats?: [{
-        base_stat: Number,
+        base_stat: number,
         stat: {
-            name: String
+            name: string
         }
 
     }];
     types?: [{
-        type:{
-            name: String
+        type: {
+            name: string
         }
-        
     }];
-    weight?: Number;
-    description?: String
+    weight?: number;
+    description?: string;
 }

@@ -7,7 +7,7 @@ import {DataService} from '../data.service'
 })
 export class AbilitiesComponent implements OnInit {
 
-  constructor(private dataService:DataService) { }
+  constructor(private dataService: DataService) { }
 
   ngOnInit() {
   }
