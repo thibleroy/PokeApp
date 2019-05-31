@@ -12,6 +12,7 @@ export class IdInputComponent implements OnInit {
   filter: string;
   idSelected: number;
   loaded: boolean;
+  id:String;
   constructor(private httpService: HttpServiceService, private dataService: DataService) {
     this.loaded = false;
   }
@@ -27,7 +28,6 @@ export class IdInputComponent implements OnInit {
 
 
     this.httpService.getPok(this.idSelected).then(() => {
-
       this.dataService.getPokemon();
       this.loaded = true;
     });
