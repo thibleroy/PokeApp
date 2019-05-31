@@ -55,4 +55,4 @@ J'ai ainsi essayé de créer une architecture logique. Les squelettes des objets
 
 ## Conclusion et ressenti général
 
-J'ai trouvé ce tp très "ludique" à réaliser dans le sens où tout le monde connaît plus ou moins le monde des pokémons. Ainsi, on pouvait se parler entre étudiants des différentes features implémentées. Je l'ai également trouvé très formateur dans le sens où j'ai pu apprendre des mécanismes, une organisation et une architecture nécessaire à appréhender dans le développement web aujourd'hui.
+J'ai trouvé ce tp très "ludique" à réaliser dans le sens où tout le monde connaît plus ou moins le monde des pokémons. Ainsi, on pouvait se parler entre étudiants des différentes features implémentées. Je l'ai également trouvé très formateur dans le sens où j'ai pu apprendre des mécanismes, une organisation et une architecture nécessaires à appréhender dans le développement web aujourd'hui.
