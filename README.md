@@ -7,7 +7,7 @@ Lors de la réalisation de ce pokémon, il a été nécessaire d'utiliser diffé
 
 Ces différents principes nous ont d'ores-et-déjà été expliqués lors du cours avec M.Barais. C'est pourquoi je ne juge pas nécessaire de revenir dessus puisque la bonne réalisation du pokédex temoigne de ma connaissance sur le sujet.
 
-Toutefois, il est bien plus intéressent je pense de raconter les problèmes que j'ai rencontrés et les solutions que j'ai trouvées pour y faire face.
+Toutefois, il est bien plus intéressant je pense de raconter les problèmes que j'ai rencontrés et les solutions que j'ai trouvées pour y faire face.
 
 ## Introduction et organisation globale
 
@@ -42,7 +42,7 @@ Remarquons que la couleur de la carte pokémon est en accord avec son type princ
 
 ### Gestion de l'asynchronicité
 
-Lors de la réalisation de mon application j'ai rencontré des problêmes liés à l'asynchronicité des requêtes http. En soit, mon application fonctionnait globalement, mais je trouvais pas mal d'erreurs dans ma console, signe que celle-ci n'était pas conçue de manière optimale. Pour y remédier, le principal mécanisme que j'ai utilisé est de rendre une promise dans mes fonctions d'appel http (je résolve la promise dans le callback de l'appel http). Ainsi, je pouvais les appeler dans ma fonction bindée par le bouton "Go" et effectuer le "then" sur la promise pour appeler un autre callback. C'est dans ce callback que j'appelle me fonction de subscribe à l'observable. 
+Lors de la réalisation de mon application j'ai rencontré des problêmes liés à l'asynchronicité du langage TypeScript. En soit, mon application fonctionnait globalement, mais je trouvais pas mal d'erreurs dans ma console, signe que celle-ci n'était pas conçue de manière optimale. Pour y remédier, le principal mécanisme que j'ai utilisé est de rendre une promise dans mes fonctions d'appel http (je résolve la promise dans le callback de l'appel http). Ainsi, je pouvais les appeler dans ma fonction bindée par le bouton "Go" et effectuer le "then" sur la promise pour appeler un autre callback. C'est dans ce callback que j'appelle me fonction de subscribe à l'observable. 
 
 ![promthen](./promthen.png)
 
