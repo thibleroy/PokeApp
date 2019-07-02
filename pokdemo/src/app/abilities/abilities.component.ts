@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {DataService} from '../data.service'
+import {DataService} from '../../lib/services/data.service'
 @Component({
   selector: 'abilities',
   templateUrl: './abilities.component.html',

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpServiceService } from '../http-service.service';
-import { DataService } from '../data.service';
+import { HttpServiceService } from '../../lib/services/http-service.service';
+import { DataService } from '../../lib/services/data.service';
+import {Specs} from '../../lib/interfaces/specs';
+import {Species} from '../../lib/interfaces/species';
 @Component({
   selector: 'app-id-input',
   templateUrl: './id-input.component.html',
@@ -10,32 +12,21 @@ import { DataService } from '../data.service';
 
 export class IdInputComponent implements OnInit {
   filter: string;
-  idSelected: number;
-  loaded: boolean;
-  id:String;
   constructor(private httpService: HttpServiceService, private dataService: DataService) {
-    this.loaded = false;
   }
-
   showPok() {
-    this.loaded = false;
-    this.dataService.pokemons.forEach((entry) => {
-      if (entry.name === this.filter) {
-        this.idSelected = entry.id;
-
-      }
+    this.dataService.loading = true;
+    this.httpService.getPokemonSpecs(this.filter).subscribe((res: Specs) => {
+      this.dataService.pokemon.specs = res;
+      this.httpService.getPokemonSpecies(this.filter).subscribe((result: Species) => {
+        this.dataService.pokemon.species = result;
+        result.flavor_text_entries.forEach(r => {
+          if (r.language.name === 'en') { this.dataService.pokemon.species.flavor_text_entries[0] = r; }
+        })
+        this.dataService.began = true;
+        this.dataService.loading = false;
+      });
     });
-
-
-    this.httpService.getPok(this.idSelected).then(() => {
-      this.dataService.getPokemon();
-      this.loaded = true;
-    });
-
-    this.httpService.getDesc(this.idSelected).then(() => {
-      this.dataService.getPokemon();
-    }
-    );
   }
   ngOnInit() {}
 

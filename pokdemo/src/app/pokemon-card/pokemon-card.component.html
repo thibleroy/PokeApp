@@ -1,8 +1,8 @@
-<mat-card *ngIf="done" [style.backgroundColor]=dataService.pokemon.color.name>
+<mat-card *ngIf="!dataService.loading" [style.backgroundColor]=dataService.pokemon.species.color.name>
   <description></description>
   <p></p>
   <mat-card-content row>
-   
+
 <stats></stats>
 <p></p>
 <abilities></abilities>
@@ -10,3 +10,4 @@
 <specs></specs>
   </mat-card-content>
 </mat-card>
+<mat-progress-bar mode="indeterminate" *ngIf="dataService.loading && dataService.began"></mat-progress-bar>

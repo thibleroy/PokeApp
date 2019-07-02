@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {DataService} from '../data.service'
+import {DataService} from '../../lib/services/data.service'
 @Component({
   selector: 'specs',
   templateUrl: './specs.component.html',
@@ -7,7 +7,7 @@ import {DataService} from '../data.service'
 })
 export class SpecsComponent implements OnInit {
 
-  constructor(private dataService:DataService) { }
+  constructor(private dataService: DataService) { }
 
   ngOnInit() {
   }

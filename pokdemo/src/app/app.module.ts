@@ -5,11 +5,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { IdInputComponent } from './id-input/id-input.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatInputModule,MatSelectModule,MatOptionModule,MatListModule,MatButtonModule,MatCardModule,MatDividerModule,MatAutocompleteModule,MatProgressBarModule} from '@angular/material'
+import {MatInputModule,MatSelectModule,MatOptionModule,MatListModule,MatButtonModule,MatCardModule,MatDividerModule,MatAutocompleteModule,MatProgressBarModule} from '@angular/material';
 import { FormsModule } from '@angular/forms';
-import { FilterPokemonPipePipe } from './filter-pokemon--pipe.pipe';
+import { FilterPokemonPipePipe } from '../lib/pipes/filter-pokemon--pipe.pipe';
 import { HttpClientModule } from '@angular/common/http';
-import {HttpServiceService} from './http-service.service';
+import {HttpServiceService} from '../lib/services/http-service.service';
 import { PokemonCardComponent } from './pokemon-card/pokemon-card.component';
 import { StatsComponent } from './stats/stats.component';
 import { SpecsComponent } from './specs/specs.component';
@@ -25,7 +25,7 @@ import { AbilitiesComponent } from './abilities/abilities.component'
     SpecsComponent,
     DescriptionComponent,
     AbilitiesComponent
-  ], 
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -43,11 +43,8 @@ import { AbilitiesComponent } from './abilities/abilities.component'
     MatProgressBarModule,
     MatListModule
   ],
- 
   providers: [HttpServiceService],
   bootstrap: [AppComponent],
 })
 export class AppModule {
- id:String=""
-
  }
