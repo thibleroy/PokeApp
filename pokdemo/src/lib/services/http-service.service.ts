@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Pokedex } from '../models/pokedex';
 import {Specs} from '../interfaces/specs';
 import {Species} from '../interfaces/species';
+import {Ability} from '../interfaces/ability';
 
 @Injectable({
   providedIn: 'root'
@@ -19,9 +20,11 @@ export class HttpServiceService {
   getPokemonSpecs(name: string): Observable<Specs> {
       return this.http.get<Specs>('https://pokeapi.co/api/v2/pokemon/' + name);
   }
-
-    getPokemonSpecies(name: string): Observable<Species> {
-        return this.http.get<Species>('https://pokeapi.co/api/v2/pokemon-species/' + name);
-    }
+  getPokemonSpecies(name: string): Observable<Species> {
+      return this.http.get<Species>('https://pokeapi.co/api/v2/pokemon-species/' + name);
+  }
+  getPokemonAbility(url: string): Observable<Ability> {
+      return this.http.get<Ability>(url);
+  }
 
 }

@@ -3,8 +3,11 @@
     <mat-card-title>Stats</mat-card-title>
   </mat-card-header>
   <mat-card-content>
-   <mat-list>
-    <a mat-list-item *ngFor="let link of dataService.pokemon.specs.stats"> {{ link.stat.name }} : <b>{{ link.base_stat}}</b> </a>
-   </mat-list>
+    <canvas baseChart
+            [datasets]="radarChartData"
+            [options]="radarChartOptions"
+            [labels]="radarChartLabels"
+            [chartType]="radarChartType">
+    </canvas>
   </mat-card-content>
 </mat-card>

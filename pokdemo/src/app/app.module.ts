@@ -15,6 +15,7 @@ import { StatsComponent } from './stats/stats.component';
 import { SpecsComponent } from './specs/specs.component';
 import { DescriptionComponent } from './description/description.component';
 import { AbilitiesComponent } from './abilities/abilities.component'
+import {ChartsModule} from 'ng2-charts';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +42,8 @@ import { AbilitiesComponent } from './abilities/abilities.component'
     MatDividerModule,
     HttpClientModule,
     MatProgressBarModule,
-    MatListModule
+    MatListModule,
+    ChartsModule
   ],
   providers: [HttpServiceService],
   bootstrap: [AppComponent],
